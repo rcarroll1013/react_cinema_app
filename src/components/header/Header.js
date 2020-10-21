@@ -51,8 +51,7 @@ const Header = () => {
         <div className="header-bar"></div>
         <div className="header-navbar">
           <div className="header-image">
-            <img src={logo} alt="Cinema App"/>
-
+            <img src={logo} alt="Cinema App" />
           </div>
           <div className={`${menuClass ? 'header-menu-toggle is-active' : 'header-menu-toggle'}`} id="header-mobile-menu" onClick={() => toggleMenu()}>
             <span className="bar"></span>
