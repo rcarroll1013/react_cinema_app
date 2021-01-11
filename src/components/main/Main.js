@@ -24,6 +24,7 @@ const Main = (props) => {
   useEffect(() => {
     setResponsePageNumber(currentPage, totalPages);
     // loadMoreMovies('now_playing', currentPage);
+    // eslint-disable-next-line
   }, [currentPage, totalPages]);
 
   const fetchData = () => {
