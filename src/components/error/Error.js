@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './Error.scss';
 
-const Error = props => {
+const Error = (props) => {
   return (
     <div className="error-page">
       <h1 className="error-header">Oops!</h1>
