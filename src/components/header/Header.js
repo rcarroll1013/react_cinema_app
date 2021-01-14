@@ -54,7 +54,7 @@ const Header = (props) => {
     }
 
     // eslint-disable-next-line
-  }, [type, disableSearch, location ]);
+  }, [type, disableSearch, location]);
 
   const setMovieTypeUrl = (type) => {
     setDisableSearch(false);
