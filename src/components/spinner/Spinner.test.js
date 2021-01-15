@@ -12,7 +12,7 @@ describe('Spinner', () => {
   });
 
   test('spinner contains 3 elements', () => {
-    const { getByTestId} = render(<Spinner />);
+    const { getByTestId } = render(<Spinner />);
     const elem = getByTestId('spinner');
     expect(elem.children.length).toBe(3);
   });
