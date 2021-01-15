@@ -134,10 +134,10 @@ jobs:
     steps:
       - run: echo "deploy my app"
       - slack/notify:
-          channel: 'cinema-circleci'
-          event: 'always'
+          channel: "cinema-circleci"
+          event: "always"
           mentions:
-          template: ''
+          template: ""
           custom: |
             {
               "blocks": [
@@ -192,61 +192,69 @@ jobs:
 
             
 workflows:
-  build_and_deploy:
+
+  build-and_deploy_test_notifications:
     jobs:
-      - build
-      - linting:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - develop
-                - staging
-                - master
-      - prettier:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - develop
-                - staging
-                - master
-      - unit-test:
-          requires:
-            - linting
-            - prettier
-          filters:
-            branches:
-              only:
-                - develop
-                - staging
-                - master
-      - deploy-to-aws-s3:
-          requires:
-            - unit-test
-          filters:
-            branches:
-              only:
-                - develop
-                - staging
-                - master
-      - deploy-to-aws-cloudfront:
-          requires:
-            - deploy-to-aws-s3
-          filters:
-            branches:
-              only:
-                - develop
-                - staging
-                - master
-      - notify-via-slack:
-          requires:
-            - deploy-to-aws-cloudfront
-          filters:
-            branches:
-              only:
-                - develop
-                - staging
-                - master
+      -build
+      -notify-via-slack:
+        requires:
+          -build
+
+  # build_and_deploy:
+  #   jobs:
+  #     - build
+  #     - linting:
+  #         requires:
+  #           - build
+  #         filters:
+  #           branches:
+  #             only:
+  #               - develop
+  #               - staging
+  #               - master
+  #     - prettier:
+  #         requires:
+  #           - build
+  #         filters:
+  #           branches:
+  #             only:
+  #               - develop
+  #               - staging
+  #               - master
+  #     - unit-test:
+  #         requires:
+  #           - linting
+  #           - prettier
+  #         filters:
+  #           branches:
+  #             only:
+  #               - develop
+  #               - staging
+  #               - master
+  #     - deploy-to-aws-s3:
+  #         requires:
+  #           - unit-test
+  #         filters:
+  #           branches:
+  #             only:
+  #               - develop
+  #               - staging
+  #               - master
+  #     - deploy-to-aws-cloudfront:
+  #         requires:
+  #           - deploy-to-aws-s3
+  #         filters:
+  #           branches:
+  #             only:
+  #               - develop
+  #               - staging
+  #               - master
+  #     - notify-via-slack:
+  #         requires:
+  #           - deploy-to-aws-cloudfront
+  #         filters:
+  #           branches:
+  #             only:
+  #               - develop
+  #               - staging
+  #               - master
