@@ -199,7 +199,13 @@ workflows:
       - notify-via-slack:
         requires:
           - build
-
+          filters:
+            branches:
+              only:
+                - develop
+                - staging
+                - master
+                
   # build_and_deploy:
   #   jobs:
   #     - build
