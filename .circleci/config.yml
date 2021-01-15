@@ -195,10 +195,10 @@ workflows:
 
   build-and_deploy_test_notifications:
     jobs:
-      -build
-      -notify-via-slack:
+      - build
+      - notify-via-slack:
         requires:
-          -build
+          - build
 
   # build_and_deploy:
   #   jobs:
