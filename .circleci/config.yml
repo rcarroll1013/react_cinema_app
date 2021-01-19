@@ -1,6 +1,6 @@
-version: 2.1
 orbs:
   slack: circleci/slack@4.2.0
+version: 2.1
 executors:
   app-executor:
     docker:
@@ -134,8 +134,8 @@ jobs:
     steps:
       - run: echo "deploy my app"
       - slack/notify:
-          channel: "cinema-circleci"
-          event: "always"
+          event: always
+          channel: C01C8KSL6JX
           mentions:
           template: ""
           custom: |
@@ -202,6 +202,7 @@ workflows:
           filters:
             branches:
               only:
+                - features/slackorbs
                 - develop
                 - staging
                 - master
