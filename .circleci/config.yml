@@ -207,6 +207,7 @@ workflows:
           filters:
             branches:
               only:
+                - feature/slackorbs
                 - develop
                 - staging
                 - master
