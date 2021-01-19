@@ -134,10 +134,10 @@ jobs:
     steps:
       - run: echo "deploy my app"
       - slack/notify:
-          event: always
-          channel: C01C8KSL6JX
+          event: 'always'
+          channel: 'cinema-circleci'
           mentions:
-          template: ""
+          template: ''
           custom: |
             {
               "blocks": [
