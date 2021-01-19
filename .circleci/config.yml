@@ -141,7 +141,6 @@ jobs:
       - slack/notify:
           event: 'always'
           channel: 'cinema-circleci'
-          mentions:
           template: ''
           custom: |
             {
@@ -151,7 +150,7 @@ jobs:
                   "text": {
                     "type": "plain_text",
                     "text": "${CIRCLE_BRANCH} branch deployment to aws s3 and cloudfront is complete. 👍",
-                    "emoji": "true"
+                    "emoji": true
                   }
                 },
                 {
@@ -194,6 +193,7 @@ jobs:
                 }
               ]
             }
+
 
             
 workflows:
