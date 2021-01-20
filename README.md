@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Overview:
+React application for movie information including movie details, ratings and reviews.
+
+This is leveraging themoviedb.org api for informationa nd image assets
+
+
+## Terraform Notes:
+- make sure that you have your aws keys configured within your local environment before running
+
+1. run terraform init
+
+
 ## Available Scripts
 
 In the project directory, you can run:
