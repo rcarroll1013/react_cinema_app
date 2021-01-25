@@ -49,14 +49,14 @@ const Main = (props) => {
 
   return (
     <div className="main" ref={mainRef} onScroll={() => handleScroll()}>
-      {loading ? <Spinner /> : <>{searchResult && searchResult.length === 0 ? <MainContent /> : <SearchResult />}</>}
+      {loading ? <Spinner /> : <> {searchResult && searchResult.length === 0 ? <MainContent /> : <SearchResult />}</>}
       <div ref={bottomLineRef}></div>
     </div>
   );
 };
 
 Main.propTypes = {
-  lists: PropTypes.array,
+  list: PropTypes.array,
   page: PropTypes.number,
   totalPages: PropTypes.number,
   loadMoreMovies: PropTypes.func,
@@ -66,7 +66,7 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  lists: state.movies.lists,
+  list: state.movies.list,
   page: state.movies.page,
   totalPages: state.movies.totalPages,
   movieType: state.movies.movieType,
