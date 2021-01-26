@@ -1,4 +1,5 @@
 .error-page {
+    display: grid;
     color: #ffffff;
     font-size: 100%;
     line-height: 1.5;
@@ -18,6 +19,7 @@
         -o-border-radius: 3px;
         text-align: center;
         text-decoration: none !important;
+        cursor: pointer;
     }
 
     .error-link:hover {

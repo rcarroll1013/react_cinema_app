@@ -21,7 +21,7 @@ const Grid = (props) => {
 
   const formatMovieTitle = (title) => {
     const titleStr = title.toLowerCase();
-    return titleStr.replace(/ /g, '-');
+    return titleStr.replace(/ |%/gi, '-');
   };
 
   return (
