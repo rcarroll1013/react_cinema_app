@@ -217,7 +217,7 @@ jobs:
       - run: echo "Slack notification"
       - slack/notify:
           event: 'always'
-          channel: 'cinema-circleci'
+          channel: 'cinema-app-circleci'
           template: ''
           custom: |
             {
@@ -332,18 +332,18 @@ workflows:
                 - develop
                 - staging
                 - master
-      # - publish-to-docker-hub:
-      #     requires:
-      #       - terraform-plan-and-apply
-      #     filters:
-      #       branches:
-      #         only:
-      #           - develop
-      #           - staging
-      #           - master
-      - deploy-to-aws-s3:
+      - publish-to-docker-hub:
           requires:
             - terraform-plan-and-apply
+          filters:
+            branches:
+              only:
+                - develop
+                - staging
+                - master
+      - deploy-to-aws-s3:
+          requires:
+            - publish-to-docker-hub
           filters:
             branches:
               only:
