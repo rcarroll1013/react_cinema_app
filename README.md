@@ -1,5 +1,58 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Overview:
+React application for movie information including movie details, ratings and reviews.
+
+This is leveraging themoviedb.org api for informationa nd image assets
+
+
+Tools
+React
+Redux
+Node-sass and CSS Grid
+Github
+Docker
+AWS S3
+AWS Cloudfront
+Slack
+Sentry
+App Usage Locally
+Clone the repo
+
+Run npm install
+
+Create an account on https://www.themoviedb.org/ and obtain an API key.
+
+Create a .env file in the root of the project and add
+
+REACT_APP_API_SECRET=your api key
+
+## Terraform Notes:
+- make sure that you have your aws keys configured within your local environment before running
+
+Terraform is leveraging aws s3 as well as aws cloudfront distribution
+
+- we're not utilizing route 53 or a custom domain name for this project since it is just a demo - if migrating to prodcution and leveraging route 53 or a domain name you'll have to update the "target_origin_id"
+
+- there are no geo restrictions configrued within this project as its a demo but that can be changed within the cloudfront.tf "restrictions" variables
+
+- tags are a local variable defined in the main.tf file and they are populated across s3 and terraform by leveraging the local.common_tags - if you want resource specific tags you will need to change that
+
+1. run terraform init
+2. run terraform fmt (after initial configureation to make sure all files are formated correctly)
+3. run terraform validate (after configuration) to pre-check all code is valid
+4. run terraform plan
+5. run terraform apply
+
+---- can also run "terraform destroy" in order to get rid of resources
+
+
+## Circli CI Notes
+- make sure that all attributes from local ENV file are coppied into circle ci environment variables
+
+
+Terraform destroy job added to circle CI pipeline but it is on hold 
+
 ## Available Scripts
 
 In the project directory, you can run:

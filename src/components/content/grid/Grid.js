@@ -21,13 +21,13 @@ const Grid = (props) => {
 
   const formatMovieTitle = (title) => {
     const titleStr = title.toLowerCase();
-    return titleStr.replace(/ /g, '-');
+    return titleStr.replace(/ |%/gi, '-');
   };
 
   return (
     <>
       <div className="grid">
-        {movieData.map((data, i) => (
+        {movieData.map((data) => (
           <div key={uuidv4()}>
             <LazyImage className="grid-cell" src={`${IMAGE_URL}${data.poster_path}`} alt="placeholder">
               <div className="grid-read-more">

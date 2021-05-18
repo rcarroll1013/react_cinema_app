@@ -3,37 +3,34 @@ import { MOVIE_API_URL, SEARCH_API_URL, MOVIE_DETAILS_URL, MOVIE_CREDITS_URL, MO
 
 export const getMovies = (type, pageNumber) => async (dispatch) => {
   try {
-    // const movies = await MOVIE_API_URL(type, pageNumber);
-    // const { results, page, total_pages } = movies.data;
-    // const payload = {
-    //     page,
-    //     totalPages: total_pages
-    // };
     const response = await getMoviesRequests(type, pageNumber);
     const { results, payload } = response;
     dispatchMethod(MOVIE_LIST, results, dispatch);
     dispatchMethod(RESPONSE_PAGE, payload, dispatch);
   } catch (error) {
     if (error.response) {
-      dispatchMethod(SET_ERROR, error.response.data.message, dispatch);
+      const payload = {
+        message: error.response.data.message || error.response.data.status_message,
+        statusCode: error.response.status
+      };
+      dispatchMethod(SET_ERROR, payload, dispatch);
     }
   }
 };
 
 export const loadMoreMovies = (type, pageNumber) => async (dispatch) => {
   try {
-    // const movies = await MOVIE_API_URL(type, pageNumber);
-    // const { results, page, total_pages } = movies.data;
-    // const payload = {
-    //     page,
-    //     totalPages: total_pages
-    // };
     const response = await getMoviesRequests(type, pageNumber);
     const { results, payload } = response;
     dispatchMethod(LOAD_MORE_RESULTS, { list: results, page: payload.page, totalPages: payload.totalPages }, dispatch);
   } catch (error) {
     if (error.response) {
-      dispatchMethod(SET_ERROR, error.response.data.message, dispatch);
+      console.log(error.response);
+      const payload = {
+        message: error.response.data.message || error.response.data.status_message,
+        statusCode: error.response.status
+      };
+      dispatchMethod(SET_ERROR, payload, dispatch);
     }
   }
 };
@@ -49,7 +46,11 @@ export const searchResult = (query) => async (dispatch) => {
     }
   } catch (error) {
     if (error.response) {
-      dispatchMethod(SET_ERROR, error.response.data.message, dispatch);
+      const payload = {
+        message: error.response.data.message || error.response.data.status_message,
+        statusCode: error.response.status
+      };
+      dispatchMethod(SET_ERROR, payload, dispatch);
     }
   }
 };

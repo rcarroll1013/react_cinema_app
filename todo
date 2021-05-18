@@ -1,0 +1,14 @@
+***********
+todos
+
+Site:
+- Figure out why infinite scroll isn't working
+- Make entire post element clickable after hover / readme appears
+- Add information / details to hero carousel 
+- Solve for text issues over poster
+
+CircleCI pipeline:
+
+- Add final s3 bucket url and cloudfront url to slack notification 
+
+- Add follow up slack notification when terraform destroy is complete
